@@ -1,0 +1,8 @@
+{
+  "name": "Ade-AJala Ministries",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
