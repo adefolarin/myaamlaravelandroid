@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,  ActivatedRoute } from '@angular/router';
 import { Platform, NavController, ToastController, LoadingController, AlertController } from '@ionic/angular';
-import { Storage } from '@ionic/Storage';
+//import { Storage } from '@ionic/Storage';
 import { ServiceService } from '../services/service.service';
 import {DomSanitizer,SafeResourceUrl} from "@angular/platform-browser"
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';

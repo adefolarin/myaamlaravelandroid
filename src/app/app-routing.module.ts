@@ -26,14 +26,6 @@ const routes: Routes = [
     loadChildren: () => import('./bible/bible.module').then( m => m.BiblePageModule)
   },
   {
-    path: 'plan',
-    loadChildren: () => import('./plan/plan.module').then( m => m.PlanPageModule)
-  },
-  {
-    path: 'payment/:id',
-    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
-  },
-  {
     path: 'movies',
     loadChildren: () => import('./movies/movies.module').then( m => m.MoviesPageModule)
   },
@@ -149,10 +141,7 @@ const routes: Routes = [
     path: 'testform',
     loadChildren: () => import('./testform/testform.module').then( m => m.TestformPageModule)
   },
-  {
-    path: 'braintree',
-    loadChildren: () => import('./braintree/braintree.module').then( m => m.BraintreePageModule)
-  },
+
   {
     path: 'kcileregmodule',
     loadChildren: () => import('./kcileregmodule/kcileregmodule.module').then( m => m.KcileregmodulePageModule)

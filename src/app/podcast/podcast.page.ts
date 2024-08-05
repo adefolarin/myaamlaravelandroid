@@ -36,18 +36,18 @@ export class PodcastPage implements OnInit {
     loader.present();
      
     return new Promise(resolve => {
-       let body = {
-         podcast: "process_podcast",
-       }
+       //let body = {
+         //podcast: "process_podcast",
+       //}
        
-       this.accessserv.postData(body, 'podcast-api.php').subscribe((res:any) =>{
-          if(res.success == true) {
+       this.accessserv.getData('podcast').subscribe((res:any) =>{
+          if(res.status == true) {
             loader.dismiss();
-            this.podcastdata = res.result;
+            this.podcastdata = res.podcasts;
             console.log(this.podcastdata)
           } else {
-            
-            console.log("Error in loading podcast");
+            loader.dismiss();
+            this.presentAlert("No Podcasts Found");
           }
        }, async err =>{
             loader.dismiss();
@@ -69,6 +69,28 @@ export class PodcastPage implements OnInit {
     });
 
  
+}
+
+
+async presentAlert(a) {
+  const alert = await this.alertCtrl.create({
+    header: a,
+    backdropDismiss: false,
+    buttons: [
+      {
+        text: 'Close',
+        handler: () => {
+          this.navCtrl.navigateForward('/home');
+        }
+      }, {
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.navigateForward('/home');
+        }
+      }
+    ]
+  });
+  await alert.present();
 }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { VideoPlayer } from '@ionic-native/video-player/ngx';
 import { Plugins } from '@capacitor/core';
 //import * as PluginsLibrary from 'capacitor-video-player';
 //import * as WebVPPlugin from 'capacitor-video-player';
@@ -27,7 +26,7 @@ export class IntroPage implements OnInit {
   private vid;
   private btn;
 
-  constructor(private videoPlayer: VideoPlayer,
+  constructor(
     private DomSanitizer:DomSanitizer,
     private router: Router,
     private navctrl: NavController) { }

@@ -16,8 +16,8 @@ export class ServiceService {
 
 	apiKey = 'AIzaSyCigpYGgD6oSf4PfKLXn1f_kT7ADo01ak0';
 	//server: string = "http://192.168.43.160:8080/projects/adeajalaministry/api/"; // default
-	server: string = "http://localhost:8080/projects/adeajalaministry/api/"; // default
-	//server2: string = "http://localhost:8000/api/";
+	//server: string = "http://localhost:8080/projects/adeajalaministry/api/"; // default
+	//server2: string = "http://localhost/projects/kcccbackend/api/";
 	server2: string = "https:/adeajalaministries.org/kcccbackend/api/";
 	//docurl: string = "http://localhost:8000/pubic/storage/admin/";
 	//server: string = "https://www.kccconline.org/adeajalaministry/api/"; // default
@@ -79,9 +79,9 @@ export class ServiceService {
 		+ this.apiKey + '&channelId=' + this.tvchannelid + '&part=snippet,id&maxResults=1&type=video&eventType=live');
 	}
 
-	saveDeviceToken(token) {  
+	/*saveDeviceToken(token) {  
 
         return this.http.get(this.server + '/saveToken.php?token='+token);
 
-     }
+     }*/
 }

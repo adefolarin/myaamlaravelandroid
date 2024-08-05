@@ -3,14 +3,15 @@ import { Platform, NavController, AlertController, IonRouterOutlet, ToastControl
   LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+//import { StatusBar, Style } from '@capacitor/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { APP_CONFIG, AppConfig } from './app.config';
 import { MyEvent } from 'services/myevent.services';
 import { Constants } from 'models/contants.models';
-import { Storage } from '@ionic/Storage';
+import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+//import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Plugins,PushNotification,PushNotificationToken,
   PushNotificationActionPerformed,AppState} from '@capacitor/core';
 const { App } = Plugins;
@@ -107,7 +108,7 @@ export class AppComponent implements OnInit {
     @Inject(APP_CONFIG) public config: AppConfig,
     private platform: Platform, private navCtrl: NavController,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
+    private statusbar: StatusBar,
     private location: Location,
     private alertController: AlertController,
     private storage: Storage,
@@ -118,7 +119,7 @@ export class AppComponent implements OnInit {
     private alertCtrl: AlertController,
     private translate: TranslateService, private myEvent: MyEvent,
     private accessprvd: ServiceService,
-    private iab: InAppBrowser) {
+   ) {
 
     this.initializeApp();
     this.backButtonEvent();
@@ -134,7 +135,7 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusbar.show();
       //this.splashScreen.hide();
       let defaultLang = window.localStorage.getItem(Constants.KEY_DEFAULT_LANGUAGE);
       this.globalize(defaultLang);    
@@ -369,10 +370,13 @@ export class AppComponent implements OnInit {
 
  give() {
   //this.router.navigate(['./give']);
-  //Browser.open({ url: 'https://aam.kccconline.org/give'});
-  this.platform.ready().then(() => {
-    let browser = this.iab.create("https:/adeajalaministries.org/kcccbackend/mobiledonation");
-  });
+  //Browser.open({ url: 'http://localhost:8000/mobiledonation'});
+
+   //this.platform.ready().then(() => {
+    //let browser = this.iab.create("https:/adeajalaministries.org/kcccbackend/mobiledonation");
+   //});
+  //this.router.navigate(['/give']);
+   Browser.open({ url: 'https:/adeajalaministries.org/kcccbackend/mobiledonation' });
 }
 
  

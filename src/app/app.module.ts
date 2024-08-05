@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
 
-import { VideoPlayer } from '@ionic-native/video-player/ngx';
 
 import { IonicStorageModule } from '@ionic/storage'
 
@@ -35,10 +34,6 @@ import { HomePage } from './home/home.page';
 import { Network } from '@ionic-native/network/ngx';
 
 import { Push } from '@ionic-native/push/ngx';
-
-//import { FCM } from '@ionic-native/fcm/ngx';
-
-import { PayPal } from '@ionic-native/paypal/ngx';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -69,14 +64,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    VideoPlayer,
     ServiceService,
     InAppBrowser,
     SocialSharing,
     HomePage,
     Network,
     Push,
-    PayPal,
     { provide: APP_CONFIG, useValue: BaseAppConfig },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

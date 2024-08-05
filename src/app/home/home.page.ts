@@ -4,14 +4,13 @@ import { Platform, NavController, ToastController, LoadingController, AlertContr
 import { Storage } from '@ionic/Storage';
 import { ServiceService } from '../services/service.service';
 import { Observable } from 'rxjs/Observable';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import {DomSanitizer,SafeResourceUrl} from "@angular/platform-browser";
-import { Network } from '@ionic-native/network/ngx';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import { Plugins } from '@capacitor/core';
 
 const { Browser } = Plugins;
+const { Network } = Plugins;
+const { Share } = Plugins;
 
 
 @Component({
@@ -72,10 +71,8 @@ export class HomePage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     public platform: Platform,
-    private iab: InAppBrowser,
-    public social: SocialSharing,
     private DomSanitizer:DomSanitizer,
-    private network: Network) { 
+   ) { 
   
     
     }
@@ -96,20 +93,7 @@ export class HomePage implements OnInit {
       this.name = this.datastorage.name;
     });*/
 
-      this.network.onDisconnect().subscribe(() => {
-        this.nonetwork = true;
-        //alert("Hello there");
-        
-      });
 
-      this.network.onConnect().subscribe(() => {
-        
-        setTimeout(()=>{
-          this.nonetwork = false;
-        },200);
-        
-        
-      });
 
     
  
@@ -158,9 +142,10 @@ ionViewWillEnter(){
   }  
   bible() {
       //this.router.navigate(['./bible']);
-      this.platform.ready().then(() => {
-        let browser = this.iab.create("https://www.bible.com");
-     });
+      //this.platform.ready().then(() => {
+        //let browser = this.iab.create("https://www.bible.com");
+     //});
+      Browser.open({ url: 'https://www.bible.com' });
       
   }  
   podcast() {
@@ -200,11 +185,11 @@ ionViewWillEnter(){
     //this.router.navigate(['./give']);
     //Browser.open({ url: 'http://localhost:8000/mobiledonation'});
 
-     this.platform.ready().then(() => {
-      let browser = this.iab.create("https:/adeajalaministries.org/kcccbackend/mobiledonation");
-      //let browser = this.iab.create("https://www.google.com");
-     });
+     //this.platform.ready().then(() => {
+      //let browser = this.iab.create("https:/adeajalaministries.org/kcccbackend/mobiledonation");
+     //});
     //this.router.navigate(['/give']);
+     Browser.open({ url: 'https:/adeajalaministries.org/kcccbackend/mobiledonation' });
   }
 
   website() {
@@ -222,15 +207,12 @@ ionViewWillEnter(){
     } else if(this.platform.is('android')) {
       this.app_url = "https://play.google.com/store/apps/details?id=com.aam.kccconline"; 
     }
-    this.social.share('', '', '', this.app_url).then(() => {
-      // Success!
-    }).catch(() => {
-      // Error!
-    });
+    Share.share({url: this.app_url,dialogTitle: 'Share with Friends'});
   }
-    
-    
 
+
+    
+  
     async loadBlog() {
      
          return new Promise(resolve => {
@@ -261,9 +243,10 @@ ionViewWillEnter(){
 
     livetv() {
       //this.navCtrl.navigateForward(['/livetv2/1']);
-      this.platform.ready().then(() => {
-        let browser = this.iab.create("https://aam.kccconline.org");
-      });
+      //this.platform.ready().then(() => {
+        //let browser = this.iab.create("https://aam.kccconline.org");
+      //});
+      Browser.open({ url: 'https://aam.kccconline.org' });
     }
 
 

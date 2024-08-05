@@ -11,11 +11,11 @@
 <ion-content fullscreen class="bg_img"> 
     <ion-card *ngFor="let data of podcastdata" class="ion-padding">
       <div id="list">
-        <h4>{{ data.audio_title }}</h4>
-        <p>{{ data.published_at }}</p>
+        <h4>{{ data.podcasts_title }}</h4>
+        <p>{{ data.podcasts_date }}</p>
       </div>
       <div>
-        <audio [src]="data.audio_url" controls></audio>
+        <audio [src]="data.podcasts_file" controls></audio>
       </div>  
     </ion-card>
 </ion-content>

@@ -36,7 +36,7 @@ export class GivePage implements OnInit {
   }
 
   givesite() {
-    this.siteurl  = this.DomSanitizer.bypassSecurityTrustResourceUrl("http://localhost:8000/mobiledonation"); 
+    this.siteurl  = this.DomSanitizer.bypassSecurityTrustResourceUrl("https://adeajalaministries.org/mobiledonation"); 
   }
 
 }
